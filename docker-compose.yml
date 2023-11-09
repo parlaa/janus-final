@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  #
+  # janus-gateway
+  #
+  janus-gateway:
+    image: canyan/janus-gateway:latest
+    command: ["/usr/local/bin/janus", "-F", "/usr/local/etc/janus"]
+    ports:
+      - "8088:8088"
+      - "8089:8089"
+      - "8889:8889"
+      - "8010:8000"
+      - "7088:7088"
+      - "7089:7089"
+    volumes:
+      - ./etc/janus/:/usr/local/etc/janus/
+      - ./config/janus/:/usr/local/lib/janus/
+      - ./share/janus/:/usr/local/share/janus/
+    restart: always
